@@ -15,5 +15,10 @@ export class HeroService {
         .then(() => this.getHeroes());
     }
 
+    getHero(id: number): Promise<Hero> {
+        return Promise.resolve(
+            this.getHeroes().then(heroes => heroes.find(hero => hero.id === id)));
+    }
+
     
 }
