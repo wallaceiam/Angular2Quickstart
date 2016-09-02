@@ -11,7 +11,6 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var core_1 = require('@angular/core');
 var router_1 = require('@angular/router');
 var hero_service_1 = require('./hero.service');
-var hero_1 = require('./hero');
 var HeroDetailComponent = (function () {
     function HeroDetailComponent(heroService, route) {
         this.heroService = heroService;
@@ -28,10 +27,10 @@ var HeroDetailComponent = (function () {
     HeroDetailComponent.prototype.goBack = function () {
         window.history.back();
     };
-    __decorate([
-        core_1.Input(), 
-        __metadata('design:type', hero_1.Hero)
-    ], HeroDetailComponent.prototype, "hero", void 0);
+    HeroDetailComponent.prototype.save = function () {
+        this.heroService.update(this.hero)
+            .then(this.goBack);
+    };
     HeroDetailComponent = __decorate([
         core_1.Component({
             selector: 'my-hero-detail',
